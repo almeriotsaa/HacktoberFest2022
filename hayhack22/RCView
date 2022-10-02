@@ -1,0 +1,29 @@
+class MyRecycleViewAdapter(
+    private val notesList: List<Notes>,
+    private val clickListener: (Notes) -> Unit
+) :
+    RecyclerView.Adapter<MyViewHolder>(){
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding: ItemListBinding =
+            DataBindingUtil.inflate(layoutInflater, R.layout.item_list,parent,false)
+    }
+
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getItemCount(): Int {
+        TODO("Not yet implemented")
+    }
+
+
+}
+
+class MyViewHolder(val binding: ItemListBinding) : RecyclerView.ViewHolder(binding.root) {
+    fun bind(notes : Notes,clickListener: (Notes) -> Unit){
+        binding.nameTextView.text = notes.title
+        binding.emailTextView.text = notes.text
+    }
+
+}
