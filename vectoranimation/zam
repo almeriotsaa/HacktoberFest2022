@@ -1,0 +1,9 @@
+// using binging to get the id of imgViewCake
+binding.imgViewCake.setOnClickListener {
+
+            binding.imgViewCake.animate().apply {
+                duration = 1000
+                rotationBy(100f)
+                start()
+            }
+        }
