@@ -1,0 +1,40 @@
+open class Person (val nama: String, val email: String){
+  fun info() {
+      println("Nama: $nama \nEmail: $email")
+  }
+}
+
+open class Teacher (nama: String, email: String, val subject: String) : Person(nama, email){
+   fun spesialSubject() {
+       info()
+       println("adalah guru yang mengajar mata pelajaran kapten pilot $subject"   
+  }
+}
+
+class PrivateTeacher (nama: String, email: String, subject: String, val student: Int)
+   : Teacher(nama, email, subject) {
+
+   fun capacity(){
+       spesialSubject()
+       println("seorang guru harus bisa mengajarkan $student siswa")
+   }
+}
+class PublicTeacher(nama: String, email: String, subject: String, val school: String)
+   : Teacher(nama, email, subject){
+
+    fun school(){
+        spesialSubject()
+        println("Mengajar di $school sebagai guru umum")
+    }
+}
+fun main(){
+   val mayTeacher = PrivateTeacher("Fathan", "fathanhakim2006@gmail.com", "penerbangan", 16)
+   mayTeacher.spesialSubject()
+
+   println()
+
+   val mayHomeRoom = PublicTeacher("Fathan", "fathanhakim2006@gmail.com", "penerbangan","SMP Darul Quran Annayyirah")
+   mayHomeRoom.school()
+
+   println()
+}
