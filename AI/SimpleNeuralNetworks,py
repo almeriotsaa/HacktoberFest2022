@@ -1,0 +1,102 @@
+from random import random
+from math import exp
+
+from sklearn import datasets
+
+class Network:
+
+  def __init__(self, n_inputs:int, n_hidden:int, n_outputs:int):
+    self.network = list()
+    #Hidden layer
+    self.network.append(self.__create_layer(n_inputs,n_hidden))
+
+    # Output layer
+    self.network.append(self.__create_layer(n_hidden,n_outputs))
+
+  def __create_layer(self, input_nodes:int, nodes_number:int):
+    layer = list()
+    for _1 in range(nodes_number):
+      node = { 'weights': self.__create_weight(input_nodes + 1) }
+      layer.append(node)
+    return layer
+
+  def __create_weight(self, weights_number:int):
+    weight = list()
+    for _ in range(weights_number):
+      weight.append(random())
+    return weight
+  
+  def __activate(self,weights, inputs):
+    activation = weights[-1] #El bias es el último peso
+    for i in range(len(weights)-1): # El último peso ya se sumó (es el bias) 
+      activation += weights[i] * float(inputs[i]) #Multiplicar cada peso por su respectiva entrada
+    return activation
+
+  def __transfer(self,activation):
+    output = 1.0 / (1.0 + exp(-activation))
+    return output
+
+  def __transfer_derivative(self,output):
+    output = output * (1.0 - output)
+    return output 
+
+  def __backpropagation(self,expected):
+    for i in reversed(range(len(self.network))):
+      layer = self.network[i]
+      errors = list()
+      
+      if i != len(self.network)-1: # capas escondidas
+        for j in range(len(layer)):
+          error = 0.0
+          for neuron in self.network[i + 1]:
+            error += (neuron['weights'][j] * neuron['delta'])
+          errors.append(error)
+      else: # capa de salida
+        for j in range(len(layer)):
+          neuron = layer[j]
+          errors.append(neuron['output'] - expected[j])
+
+      for j in range(len(layer)):
+        neuron = layer[j]
+        neuron['delta'] = errors[j] * self.__transfer_derivative(neuron['output'])
+
+  def __update_weights(self, row, learning_rate:int):
+    for i in range(len(self.network)):
+      inputs = row[0]
+      if i != 0:
+        inputs = [neuron['output'] for neuron in self.network[i - 1]]
+      for neuron in self.network[i]:
+        for j in range(len(inputs)):
+          neuron['weights'][j] -= learning_rate * neuron['delta'] * inputs[j]
+        neuron['weights'][-1] -= learning_rate * neuron['delta']
+
+  def predict(self, inputs:list):
+    for layer in self.network:
+      next_inputs = []
+      for neuron in layer:
+        activation = self.__activate(neuron['weights'], inputs)
+        neuron['output'] = self.__transfer(activation)
+        next_inputs.append(neuron['output'] )
+      inputs = next_inputs
+    return inputs
+
+  def train(self, dataset:list, learning_rate:int):
+    for data_row in dataset:
+      prediction = self.predict(data_row[0])
+      self.__backpropagation( data_row[1])
+      self.__update_weights(data_row,learning_rate)
+
+network = Network(2,3,1)
+
+dataset = [
+  [[0,1],[0]],
+  [[1,0],[1]],
+  [[1,1],[1]],
+  [[0,0],[0]],
+]
+
+network.train(dataset,0.5)
+
+result = network.predict([1,0])
+
+print("Input:",[1,0],"Output:",result)
