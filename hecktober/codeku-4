@@ -1,6 +1,0 @@
-private fun showAlarmNotification(
-        context: Context?,
-        title: String,
-        message: String,
-        notificationId: Int
-    )
