@@ -1,0 +1,29 @@
+fun setOneTimeAlarm(context: Context, type: Int, date: String, time: String, message: String) {
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+
+        val intent = Intent(context, AlarmReceiver::class.java)
+        intent.putExtra(EXTRA_MESSAGE, message)
+        intent.putExtra(EXTRA_TYPE, type)
+
+        Log.e("ErrorSetOneTimeAlarm", "$date $time")
+        val dateArray = date.split("-").toTypedArray()
+        val convertedDateArray = convertArrayToArrayInt(dateArray)
+
+        val timeArray = time.split(":").toTypedArray()
+        val convertedTimeArray = convertArrayToArrayInt(timeArray)
+
+        val calendar = Calendar.getInstance()
+        calendar.set(Calendar.DAY_OF_MONTH, convertedDateArray[0])
+        calendar.set(Calendar.MONTH, convertedDateArray[1]-1)
+        calendar.set(Calendar.YEAR, convertedDateArray[2])
+
+        calendar.set(Calendar.HOUR, convertedTimeArray[0])
+        calendar.set(Calendar.MINUTE, convertedTimeArray[1])
+        calendar.set(Calendar.SECOND, 0)
+
+        val pendingIntent = PendingIntent.getBroadcast(context, 101, intent, 0)
+        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.timeInMillis, pendingIntent)
+        Toast.makeText(context, "Success set One Time Alarm", Toast.LENGTH_SHORT).show()
+        Log.i("SetAlarmNotification", "setOneTimeAlarm: Alarm will rings on ${calendar.time}")
+
+    }
