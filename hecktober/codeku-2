@@ -1,0 +1,9 @@
+override fun onNoteClick(note: Note) {
+        val intent = Intent(this@MainActivity, AddEditNoteActivity::class.java)
+        intent.putExtra("noteType", "Edit")
+        intent.putExtra("noteTitle", note.noteTitle)
+        intent.putExtra("noteDescription", note.noteDescription)
+        intent.putExtra("noteId", note.id)
+        startActivity(intent)
+        this.finish()
+    }
