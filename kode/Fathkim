@@ -1,0 +1,12 @@
+fun main(){
+   var sum = 0
+   var n = 1
+   while (n <= 10){
+       sum += n
+       n++
+       if(sum > 20){
+           break
+       }
+   }
+   println(sum)
+}
