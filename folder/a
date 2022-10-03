@@ -1,0 +1,6 @@
+val number = 5
+if(number >= 1){
+  println("angka lebih besar dari 1")
+} else {
+  println("angka tidak lebih dari 1")
+}
