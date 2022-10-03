@@ -1,0 +1,20 @@
+fun main(){
+   val nama = arrayOf("michael", "Hygra", "Slovoski", "Mohammad")
+   val umur = arrayOf(20,22,21,19)
+   val negara = arrayOf("USA", "Cambodia", "Rusia", "Indoensia")
+
+   val data = arrayOf(nama, umur, negara)
+
+   for (value in data){
+       println(" ")
+       for (array in value){
+           print("$array ")
+       }
+   }
+
+   for (angka in umur){
+       if (angka >20){
+          println(data[0][umur.indexOf(angka)])
+       }
+   }
+}
