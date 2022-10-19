@@ -1,0 +1,54 @@
+package oop;
+
+public class Manusia {
+    // Properti atau Variabel atau
+    // Sifat yang di miliki Manusia
+    String nama;
+    String pekerjaan;
+    int tinggi;
+    int umur;
+    boolean laki;
+
+    // Method atau Function atau
+    // Perilaku yang dimiliki Manusia
+    void makan(){
+        System.out.println("Si " + nama + " Sedang Makan");
+    }
+
+    void tidur(){
+        System.out.println("Si " + nama + " Sedang Tidur");
+    }
+
+    public static void main(String[] args){
+        // Objek
+        Manusia reihan = new Manusia();
+
+        reihan.nama = "Reihan Fatilla";
+        reihan.pekerjaan = "Pelajar";
+        reihan.umur = 16;
+        reihan.tinggi = 173;
+        reihan.laki = true;
+
+        reihan.tidur();
+    }
+
+    // Latihan
+    // Buatlah kelas sesuai hewan masing-masing
+    // Fauzan = Jerapah
+    // Agung = Sapi
+    // Ade = Ular
+    // Hisam = Harimau
+    // Ari = Kucing
+    // Alex = Anjing
+    // Gyran = Monyet
+
+    // Properti / sifat
+    // nama
+    // umur
+    // Melahirkan
+    // berbulu
+
+    // Kelakuan / Fungsi
+    // minimal 3 kelakuan
+
+}
