@@ -1,0 +1,84 @@
+package oop;
+
+import java.util.Scanner;
+
+public class Suhu {
+
+    static void tentukanSuhu(int suhu){
+        if(suhu > 28){
+            System.out.println("Panas");
+        } else if(suhu > 5){
+            System.out.println("Normal");
+        } else{
+            System.out.println("Dingin");
+        }
+    }
+
+//    static void translateWarna(String warna){
+//        switch(warna){
+//            case "merah":
+//                System.out.println("Red");
+//                break;
+//            case "biru":
+//                System.out.println("Blue");
+//                break;
+//            case "hitam":
+//                System.out.println("Black");
+//                break;
+//            case "hijau":
+//                System.out.println("Green");
+//                break;
+//            case "kuning":
+//                System.out.println("Yellow");
+//                break;
+//        }
+//    }
+
+    static String translateWarna(String warna){
+        System.out.println(warna);
+        if(warna == "kuning"){
+            return "yellow";
+        } else if(warna == "biru"){
+            return "blue";
+        } else if(warna == "hitam"){
+            return "black";
+        } else {
+            return "Tidak ada warna sesuai";
+        }
+    }
+
+    public static void main(String[] args){
+        Scanner input = new Scanner(System.in);
+
+//        String namaBesar = hurufBesar();
+//        System.out.println( hurufBesar() );
+
+//        tentukanSuhu(input.nextInt());
+
+        System.out.println( translateWarna("kuning") );
+
+    }
+
+    // Buat variable suhu
+    // buat fungsi untuk menentukan
+    // suhu-nya panas atau dingin
+    //
+    // Ketentuan Suhu
+    // Menggunakan if-else
+    // Suhu > 28 = Panas
+    // Suhu > 5 = Normal
+    // Suhu < 5 = Dingin
+    //
+    // Buat fungsi main
+
+
+    // Buat lagi fungsi
+    // fungsi yang menerima Parameter
+    // String warna dalam bahasa indonesia
+    // merah = red
+    // biru = blue
+    // hitam = black
+    // hijau = green
+    // kuning = yellow
+
+}
