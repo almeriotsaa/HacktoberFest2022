@@ -1,0 +1,46 @@
+package oop;
+
+public class Parameter {
+
+    static void jumlahNomor(int angkaPertama, int angkaKedua){
+        int hasil = angkaPertama + angkaKedua;
+        System.out.println(hasil);
+    }
+
+    static void gabungkanNama(String namaPertama, String namaKedua, int umur){
+        String hasil = namaPertama + " " + namaKedua + "\nBerumur " + umur;
+        System.out.println(hasil);
+    }
+
+    static void dolarKeRupiah(int dolar){
+        System.out.println("Dolar: " + dolar);
+        System.out.println("Rupiah: " + dolar * 15000);
+    }
+
+    public static void main(String[] args){
+        jumlahNomor(15, 5);
+        gabungkanNama("Reihan", "Fatilla", 17);
+        dolarKeRupiah(12);
+    }
+
+    // Latihan 1
+    // Buat fungsi untuk menghitung
+    // Luas Persegi Panjang
+    // Luas = panjang * lebar
+    // Keliling = panjang * 2 + lebar * 2
+    //
+    // Parameter:
+    // panjang, lebar
+
+    // Latihan 2
+    // buatlah fungsi yang
+    // menerima parameter String
+    //
+    // print 2 String parameter
+    // yang dimasukkan sebanyak 3x
+
+    // Parameter String
+    // gandakanKata("kamu")
+    // "kamukamukamu"
+
+}
