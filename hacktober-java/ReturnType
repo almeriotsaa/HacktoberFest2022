@@ -1,0 +1,22 @@
+package oop;
+
+public class ReturnType {
+
+    static void jumlahNomor(int angkaPertama, int angkaKedua){
+        int hasil = angkaPertama + angkaKedua;
+        System.out.println(hasil);
+    }
+
+    static int tambahAngka(int angkaPertama, int angkaKedua){
+        return angkaPertama + angkaKedua;
+    }
+
+    static String gandakanNama(String nama){
+        return nama+nama;
+    }
+
+    public static void main(String[] args){
+        System.out.println( gandakanNama("Reihan") );
+    }
+
+}
